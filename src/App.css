@@ -1,0 +1,73 @@
+.App {
+  text-align: center;
+}
+::-webkit-scrollbar {
+ 
+  width:1px;
+  height: 1px;
+  border-radius: 50%;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #353333;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  width:1px;
+  height: 1px;
+  background: #0ab8f7;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #104806;
+}
+input,textarea{ 
+ background: #272626;
+box-shadow:  5px 5px 10px #100f0f,
+             -5px -5px 10px #3e3d3d;
+}
+.hey{
+  border-radius: 21px;
+  background: #272626;
+  box-shadow:  5px 5px 10px #100f0f,
+               -5px -5px 10px #1b1b1b;
+}
+.hey1{
+  background: #272626;
+  box-shadow:  5px 5px 10px #100f0f,
+               -5px -5px 10px #1b1b1b;
+
+}
+.horizontalscroll{
+  display: flex;
+  flex-direction: row;
+  overflow-y: hidden;
+
+}
+.circleavtar{
+  height:10rem;
+  width:10rem;
+  padding:.4rem;
+
+  overflow: hidden;
+  border-radius: 50%;
+  box-shadow: inset 23px 23px 45px #141414,
+  inset -23px -23px 45px #3a3838;
+}
+img {
+  position: relative;
+  bottom:-5%;
+  width: 100%; /* or any custom size */
+  height: 100%; 
+  object-fit: contain;
+}
+body{
+  height:100vh;
+  width:100vw;
+  overflow-x: hidden;
+}
+
+
