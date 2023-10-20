@@ -5,13 +5,7 @@ const cors=require('cors');
 connectTomongo();
 const app=express();
 const port=5000;
-app.use(cors (
-    {
-    origin: ["https://notebookapi-rho.vercel.app"],
-    methods: ["POST", "GET","PUT","DELETE"],
-    credentials: true
-    }
-    
+app.use(cors ( 
     ));
 app.use(express.json());//for dealing data in json
 //available routes
