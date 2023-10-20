@@ -5,7 +5,14 @@ const cors=require('cors');
 connectTomongo();
 const app=express();
 const port=process.env.PORT || 5000;
-app.use(cors());
+app.use(cors (
+    {
+    origin: ["https://deploy-mern-1whq.vercel.app"],
+    methods: ["POST", "GET","PUT","DELETE"],
+    credentials: true
+    }
+    
+    ));
 app.use(express.json());//for dealing data in json
 //available routes
 if(process.env.NODE_ENV == "production"){
