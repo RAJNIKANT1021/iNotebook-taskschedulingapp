@@ -7,7 +7,7 @@ const app=express();
 const port=5000;
 app.use(cors (
     {
-    origin: ["https://deploy-mern-1whq.vercel.app"],
+    origin: ["https://notebookapi-rho.vercel.app"],
     methods: ["POST", "GET","PUT","DELETE"],
     credentials: true
     }
