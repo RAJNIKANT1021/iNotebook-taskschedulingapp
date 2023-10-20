@@ -6,6 +6,12 @@ connectTomongo();
 const app=express();
 const port=5000;
 app.use(cors ( 
+    {
+        origin: "https://inotebook-ur-cloud-notes.vercel.app",
+        methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+        preflightContinue: false,
+        optionsSuccessStatus: 204
+      }
     ));
 app.use(express.json());//for dealing data in json
 //available routes
