@@ -5,7 +5,7 @@ const NoteState=(props)=>{
   
 
 
-  const host="http://localhost:5000"
+  const host="https://notebookapi-rho.vercel.app"
   
       const [notes,setnotes]=useState([])
 
