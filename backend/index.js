@@ -5,14 +5,15 @@ const cors=require('cors');
 connectTomongo();
 const app=express();
 const port=5000;
-app.use(cors ( 
-    {
+app.use(
+    cors({
         origin: "https://inotebook-ur-cloud-notes.vercel.app",
-        methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-        preflightContinue: false,
-        optionsSuccessStatus: 204
-      }
-    ));
+      preflightContinue: true,
+      methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+      credentials: true,
+    })
+  );
+
 app.use(express.json());//for dealing data in json
 //available routes
 // if(process.env.NODE_ENV == "production"){
