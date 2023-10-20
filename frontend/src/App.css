@@ -29,6 +29,13 @@ input,textarea{
 box-shadow:  5px 5px 10px #100f0f,
              -5px -5px 10px #3e3d3d;
 }
+input{
+  background: #272626;
+  box-shadow:  5px 5px 10px #100f0f,
+               -5px -5px 10px #3e3d3d;
+
+
+}
 .hey{
   border-radius: 21px;
   background: #272626;

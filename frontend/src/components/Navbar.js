@@ -33,10 +33,19 @@ const Navbar = () => {
           <Link className ="nav-link disabled" aria-disabled="true">Disabled</Link>
         </li>
       </ul>
-      <form className ="d-flex" role="search">
-        <input className ="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-        <button className ="btn btn-outline-success" type="submit">Search</button>
+      {
+       !localStorage.getItem('token') &&
+        <form className ="d-flex">
+        <Link to="/login"className="btn btn-primary mx-2">
+        Access Your Notes
+        </Link>
+        <Link to="/signup" className="btn btn-success mx-2">
+        Start Organizing Your Notes
+        </Link>
+       
       </form>
+      }
+    
     </div>
   </div>
 </nav>

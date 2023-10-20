@@ -32,10 +32,11 @@ router.post(
     }),
   ],
   async (req, res) => {
+    let success=false;
     //express-validator for validation
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+      return res.status(400).json({success, errors: errors.array() });
     }
 
     try {
@@ -45,7 +46,7 @@ router.post(
       if (user) {
         return res
           .status(400)
-          .json({ error: "Sorry an user with this email already exists" });
+          .json({success, error: "Sorry an user with this email already exists" });
       }
 const salt=await bcrypt.genSalt(10);
 const secpass= await bcrypt.hash(req.body.password,salt);
@@ -60,12 +61,13 @@ const secpass= await bcrypt.hash(req.body.password,salt);
             id:user.id,
         }
       }
+      success=true;
       const authtoken=JWT.sign(data,JWT_SECRET);
-      return res.json({authtoken})
+      return res.json({success,authtoken})
        
     } catch (err) {
       console.log(err.message);
-    return  res.status(500).json({error:"Some internal error has occured. "})
+    return  res.status(500).json({success,error:"Some internal error has occured. "})
     }
   }
 );
@@ -78,33 +80,37 @@ router.post(
       body("password", "Password Cannot be blank").exists(),
     ],
     async (req, res) => {
+      let success=false;
       //express-validator for validation
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
+        return res.status(400).json({ success,errors: errors.array() });
       }
       const {email,password}=req.body;
       try{
         let user=await User.findOne({email});
         if(!user){
-            return res.status(400).json({error:"Please try to login with correct credentials"});
+            return res.status(400).json({success,error:"Please try to login with correct credentials"});
         }
         const passwordCompare=await bcrypt.compare(password,user.password)
         if(!passwordCompare){
-            return res.status(400).json({error:"Please try to login with correct credentials"});
+          
+            return res.status(400).json({success,error:"Please try to login with correct credentials"});
         }
 
         const data={
             user:{
                 id:user.id,
             }
+
           }
+           success=true;
           const authtoken=JWT.sign(data,JWT_SECRET);
-          return res.json({authtoken})
+          return res.json({success,authtoken})
            
         } catch (err) {
           console.log(err.message);
-        return  res.status(500).json({error:"Some internal error has occured. "})
+        return  res.status(500).json({success,error:"Some internal error has occured. "})
         }
   
     
@@ -116,15 +122,16 @@ router.post(
   //
   router.post('/getuser',fetchuser,async(req,res)=>{
 
-
+    let success=false;
   try{
     const userId=req.user.id;
     const user=await User.findById(userId).select("-password");
-   return res.status(200).json(user);
+    success=true;
+   return res.status(200).json({success,user});
 
   }catch (err) {
     console.log(err.message);
-  return  res.status(500).json({error:"Some internal error has occured. "})
+  return  res.status(500).json({success,error:"Some internal error has occured. "})
   }
 })
 module.exports = router;
