@@ -9,12 +9,7 @@ const port = 5000;
 
 // Enable CORS with specific options
 app.use(
-  cors({
-    origin: "https://inotebook-ur-cloud-notes.vercel.app", // Set your frontend URL here
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    credentials: true,
-    preflightContinue: false, // By default, preflight requests are handled, so no need to set this explicitly
-  })
+  cors()
 );
 
 app.use(express.json()); // Middleware for parsing JSON request bodies
